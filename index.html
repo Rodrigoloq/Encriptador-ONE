@@ -9,32 +9,43 @@
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="encriptador">
-
-        <img id="logo" src="imagenes/logo.png" alt="">
-        
+    <!--LOGO-->
+    <img id="logo" src="imagenes/logo.png" alt="">
+    <!--encriptador-->
+    <div id="encriptador">       
+        <!--entrada-->
         <div id="entrada">
-            <textarea id="txtentrada" placeholder="Ingrese el texto aqui"></textarea>            
+            <textarea id="txtentrada" placeholder="Ingrese el texto aqui"></textarea>
+                          
             <div id="alerta">
                 <img src="imagenes/alerta.png"><p>Solo letras minúsculas y sin acento</p>
-            </div>            
-            <div id="botones">
+            </div> 
+                        
+            <div id="botones-entrada">
                 <button class="boton" id="botonencriptar">Encriptar</button>
                 <button class="boton" id="botondesencriptar">Desencriptar</button>
             </div>            
-        </div>
-        
+        </div>       
+        <!--salida-->
         <div id="salida">
-            <textarea id="txtsalida" readonly></textarea>            
+            <textarea id="txtsalida" readonly></textarea>  
+                     
             <div id="msgsalida">
-                <img src="imagenes/muñeco.png">
-                <h1>Ningún mensaje fue encontrado</h1>
-                <p>Ingresa el texto que desees encriptar o desencriptar.</p>
+                <img id="muñeco" src="imagenes/muñeco.png">
+                
+                <h1>Ningún mensaje fue <br> encontrado</h1>
+                <p>Ingresa el texto que desees encriptar o <br> desencriptar.</p> 
+                
+            </div>
+            
+            <div id="botones-salida">
+                <button class="boton" id="botoncopiar">Copiar</button>
             </div>            
-            <button class="boton" id="botoncopiar">Copiar</button>
         </div>
-
     </div>
+    <footer id="footer">
+        <p>Desarrollado por Rodrigoloq - Challenge 01 Encriptador de texto</p>
+    </footer>
 </body>
 </html>
 
@@ -50,8 +61,8 @@
 
     //mensaje de texto no encontrado
     var msgsalida = document.getElementById("msgsalida");
-
-    botonCopiar.disabled = true;
+    
+    botonCopiar.style.visibility = "hidden";
 
     function encriptar() {
         textoSalida.innerHTML = (((((textoEntrada.value).replace(/\e/g,"enter")).replace(/\i/g,"imes")).replace(/\a/g,"ai")).replace(/\o/g,"ober")).replace(/\u/g,"ufat");
@@ -59,10 +70,12 @@
         botonCopiar.disabled = false;
                 
         if(textoEntrada.value.trim() == ""){
-            msgsalida.style.display="";  
+            msgsalida.style.display="";
+            botonCopiar.style.visibility = "hidden";  
         }
         else{
-            msgsalida.style.display="none"; 
+            msgsalida.style.display="none";
+            botonCopiar.style.visibility = "";
         }       
         
         textoEntrada.value = "";
@@ -75,10 +88,12 @@
         botonCopiar.disabled = false;
 
         if(textoEntrada.value.trim() == ""){
-            msgsalida.style.display="";  
+            msgsalida.style.display="";
+            botonCopiar.style.visibility = "hidden";
         }
         else{
-            msgsalida.style.display="none"; 
+            msgsalida.style.display="none";
+            botonCopiar.style.visibility = ""; 
         }   
 
         textoEntrada.value = "";   
